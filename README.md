@@ -1,4 +1,4 @@
-# Adonis API application
+# Adonis AIDPI API application
 
 This is the boilerplate for creating an API server in AdonisJs, it comes pre-configured with.
 
@@ -8,22 +8,36 @@ This is the boilerplate for creating an API server in AdonisJs, it comes pre-con
 4. Lucid ORM
 5. Migrations and seeds
 
-## Setup
+## TO RUN
 
-Use the adonis command to install the blueprint
+Use the adonis command to run app
 
 ```bash
-adonis new yardstick --api-only
+adonis serve --dev
 ```
 
-or manually clone the repo and then run `npm install`.
+### Seeds
 
+Run the following command to run user seeds. Seeds in Database/seeds/UserSeeder
 
-### Migrations
-
-Run the following command to run startup migrations.
-
-```js
-adonis migration:run
+```bash
+adonis seed
 ```
-"# AIDPI-BACKEND" 
+### ROUTES
+│ Route      │ Verb(s)   │ Handler                 │ Middleware │ Name          │
+├────────────┼───────────┼─────────────────────────┼────────────┼───────────────┼
+│ /          │ HEAD,GET  │ Closure                 │            │ /             │        
+├────────────┼───────────┼─────────────────────────┼────────────┼───────────────┼
+│ /sessions  │ POST      │ SessionController.store │            │ /sessions     │        
+├────────────┼───────────┼─────────────────────────┼────────────┼───────────────┼
+│ /users     │ HEAD,GET  │ UserController.index    │ auth       │ users.index   │        
+├────────────┼───────────┼─────────────────────────┼────────────┼───────────────┼
+│ /users     │ POST      │ UserController.store    │ auth       │ users.store   │       
+├────────────┼───────────┼─────────────────────────┼────────────┼───────────────┼
+│ /users/:id │ HEAD,GET  │ UserController.show     │ auth       │ users.show    │       
+├────────────┼───────────┼─────────────────────────┼────────────┼───────────────┼
+│ /users/:id │ PUT,PATCH │ UserController.update   │ auth       │ users.update  │     
+├────────────┼───────────┼─────────────────────────┼────────────┼───────────────┼
+│ /users/:id │ DELETE    │ UserController.destroy  │ auth       │ users.destroy │ 
+
+
