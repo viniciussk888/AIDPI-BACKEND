@@ -19,7 +19,7 @@ class UserSeeder {
       serviceStation: 'UPA',
       aidpi: true,
       admin: true,
-      active: false
+      active: true
     })
   }
 }

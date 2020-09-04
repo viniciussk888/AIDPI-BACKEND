@@ -13,6 +13,7 @@ class SessionController {
 
     return ([token,
       {
+        "id": user.id,
         "username": user.username,
         "name": user.name,
         "office": user.office,
