@@ -11,5 +11,6 @@ Route.post('sessions', 'SessionController.store');
 Route.group(() => {
   Route.resource('users', 'UserController').apiOnly();
   Route.resource('patients', 'PatientController').apiOnly();
+  Route.post('searchpatients', 'PatientController.search');
   Route.resource('servicesstations', 'ServiceStationController').apiOnly();
 }).middleware(['auth'])
