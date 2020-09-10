@@ -17,12 +17,29 @@ class VaccineController {
     return vaccine
   }
   async update({ params, request }) {
-    const vaccine = await Vaccine.findOrFail(params.id)
+    let vaccine = await Vaccine.findOrFail(params.id)
     const data = request.all()
 
-    vaccine.merge(data)
+    const arrayVacinnes = JSON.parse(vaccine.vaccine_list)
 
-    await vaccine.save()
+    try {
+      let count = 0;
+      arrayVacinnes.map(item => {
+        if (item.name === data.name) {
+          arrayVacinnes[count].situation = data.situation
+          arrayVacinnes[count].date = data.date
+          arrayVacinnes[count].responsible = data.responsible
+        }
+        count++
+      })
+
+      vaccine.vaccine_list = JSON.stringify(arrayVacinnes)
+
+      await vaccine.save()
+
+    } catch (error) {
+      console.log(error)
+    }
 
     return vaccine
   }
