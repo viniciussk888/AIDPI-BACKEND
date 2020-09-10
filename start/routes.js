@@ -12,6 +12,7 @@ Route.group(() => {
   Route.resource('users', 'UserController').apiOnly();
   Route.resource('patients', 'PatientController').apiOnly();
   Route.post('searchpatients', 'PatientController.search');
+  Route.get('dashboard', 'DashboardController.index');
   Route.resource('servicesstations', 'ServiceStationController').apiOnly();
   Route.resource('vaccines', 'VaccineController').apiOnly();
 }).middleware(['auth'])
