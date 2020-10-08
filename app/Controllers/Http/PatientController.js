@@ -188,6 +188,11 @@ class PatientController {
     const patient = await Database.table('patients').where('name', 'like', '%' + searchPatientName + '%')
     return patient;
   }
+  async searchWithSus({ params, request }) {
+    const { searchPatientSus } = request.all()
+    const patient = await Database.table('patients').where('sus', searchPatientSus)
+    return patient;
+  }
   async update({ params, request }) {
     const patient = await Patient.findOrFail(params.id)
     const data = request.all()
