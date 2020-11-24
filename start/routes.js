@@ -21,4 +21,7 @@ Route.group(() => {
   Route.resource('servicesstations', 'ServiceStationController').apiOnly();
   //vaccines
   Route.resource('vaccines', 'VaccineController').apiOnly();
+  //aidpi
+  Route.post('aidpi-risk', 'AidpiController.search');
+  Route.post('aidpivalid', 'AidpiController.validStep');
 }).middleware(['auth'])
